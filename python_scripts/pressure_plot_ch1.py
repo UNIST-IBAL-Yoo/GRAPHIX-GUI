@@ -55,7 +55,7 @@ class SubPlotCh1(QtWidgets.QWidget):
         currentTime = timestamp()
         currentTimeStr = time.ctime()
         self.x.append(currentTime)
-        pressData = get_pres1_CMD()
+        pressData = get_press1_CMD()
         pressUnit = get_unit_CMD()
         self.y.append(float(pressData))
 
