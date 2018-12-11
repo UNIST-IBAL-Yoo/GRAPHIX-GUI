@@ -13,13 +13,14 @@ import time
 
 DEVICE_NAME = "GRAPHIX3:"
 
-SEND_READ_CMD = "readCMD"     # Sending Read Command in .db
-SEND_WRITE_CMD = "writeCMD"   # Sending Write Command in .db
+SEND_READ_CMD = "readCMD"         # Sending Read Command in .db
+SEND_WRITE_CMD = "writeCMD"       # Sending Write Command in .db
 GET_VERSION_CMD = "getVersion"    # Get Version Command in .db
 GET_SN_CMD = "getSN"              # Get Serial Number Command in .db
 GET_PN_CMD = "getPN"              # Get Part Number Command in .db
-GET_UNIT_CMD = "getUnit"            # Get Pressure Unit Command in .db
-GET_PRES1_CMD = "getPres1"           # Get Pressure in Ch.1 Command in .db
+GET_UNIT_CMD = "getUnit"          # Get Pressure Unit Command in .db
+GET_PRESS1_CMD = "getPress1"      # Get Pressure in Ch.1 Command in .db
+GET_PRESS2_CMD = "getPress2"      # Get Pressure in Ch.2 Command in .db
 
 chSendRead = ca.create_channel(DEVICE_NAME+SEND_READ_CMD+".VAL")
 chSendWrite = ca.create_channel(DEVICE_NAME+SEND_WRITE_CMD+".VAL")
@@ -27,7 +28,8 @@ chGetVersion = ca.create_channel(DEVICE_NAME+GET_VERSION_CMD+".VAL")
 chGetSN = ca.create_channel(DEVICE_NAME+GET_SN_CMD+".VAL")
 chGetPN = ca.create_channel(DEVICE_NAME+GET_PN_CMD+".VAL")
 chGetUnit = ca.create_channel(DEVICE_NAME+GET_UNIT_CMD+".VAL")
-chGetPres1 = ca.create_channel(DEVICE_NAME+GET_PRES1_CMD+".VAL")
+chGetPress1 = ca.create_channel(DEVICE_NAME+GET_PRESS1_CMD+".VAL")
+chGetPress2 = ca.create_channel(DEVICE_NAME+GET_PRESS2_CMD+".VAL")
 
 def get_version_CMD():
     """
@@ -77,16 +79,28 @@ def get_unit_CMD():
     return unitGotten
     
     
-def get_pres1_CMD():
+def get_press1_CMD():
     """
     Get Pressure Data in CH.1
     """
-    getPresCMD1 = calculate_send_read_CMD(1, 29)
-    ca.put(chGetPres1, getPresCMD1)
+    getPressCMD1 = calculate_send_read_CMD(1, 29)
+    ca.put(chGetPress1, getPressCMD1)
     time.sleep(0.1)
-    presArr1 = ca.get(chGetPres1)
-    presGotten1 = convert_receive_read_value(presArr1)
-    return presGotten1
+    pressArr1 = ca.get(chGetPress1)
+    pressGotten1 = convert_receive_read_value(pressArr1)
+    return pressGotten1
+
+
+def get_press2_CMD():
+    """
+    Get Pressure Data in CH.2
+    """
+    getPressCMD2 = calculate_send_read_CMD(2, 29)
+    ca.put(chGetPress2, getPressCMD2)
+    time.sleep(0.1)
+    pressArr2 = ca.get(chGetPress2)
+    pressGotten2 = convert_receive_read_value(pressArr2)
+    return pressGotten2
 
 
 def send_read_CMD(parameterGroup=None, parameterNumber=None):
