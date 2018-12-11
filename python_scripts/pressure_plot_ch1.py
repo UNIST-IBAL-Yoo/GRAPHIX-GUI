@@ -67,7 +67,7 @@ class SubPlotCh1(QtWidgets.QWidget):
         logFile.write("{timestamp},{time},{pressure},{unit}".
                                           format(timestamp=currentTime,
                                                  time=currentTimeStr,
-                                                 pressure=pressData
+                                                 pressure=pressData,
                                                  unit=pressUnit
                                                 ))
         logFile.close()
