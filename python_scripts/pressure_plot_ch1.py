@@ -56,17 +56,20 @@ class SubPlotCh1(QtWidgets.QWidget):
         currentTimeStr = time.ctime()
         self.x.append(currentTime)
         pressData = get_pres1_CMD()
+        pressUnit = get_unit_CMD()
         self.y.append(float(pressData))
 
         self.le1.setText("Current Pressure\t :\t" 
-                       + pressData + "\t" + get_unit_CMD())
+                       + pressData + "\t" + pressUnit)
         
         logFile = open("Pressure_Data.csv", "a")
         logFile.write("\n")
-        logFile.write("{timestamp},{time},{pressure}".
+        logFile.write("{timestamp},{time},{pressure},{unit}".
                                           format(timestamp=currentTime,
                                                  time=currentTimeStr,
-                                                 pressure=pressData))
+                                                 pressure=pressData
+                                                 unit=pressUnit
+                                                ))
         logFile.close()
 
         self.draw_chart(self.x, self.y)
