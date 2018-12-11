@@ -1,7 +1,8 @@
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
-from pressure_plot import *
+from pressure_plot_ch1 import *
+from pressure_plot_ch2 import *
 from connect_ioc import *
 
 main_ui_class = uic.loadUiType("main.ui")[0]
@@ -13,13 +14,19 @@ class MyWindow(QMainWindow, main_ui_class):
         self.versionOutput.setText(get_version_CMD())
         self.snOutput.setText(get_sn_CMD())
         self.pnOutput.setText(get_pn_CMD())
-        self.ch1Press.clicked.connect(self.subPlot)
+        self.ch1Press.clicked.connect(self.subPlotch1)
+        self.ch2Press.clicked.connect(self.subPlotch2)
         self.sendButton.clicked.connect(self.send_CMD)
         self.receiveButton.clicked.connect(self.get_CMD)
 
-    def subPlot(self):
+    def subPlotch1(self):
         self.window = QtWidgets.QMainWindow()
-        self.ui = SubPlot()
+        self.ui = SubPlotCh1()
+        self.ui.setupPlot()
+    
+    def subPlotch2(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = SubPlotCh2()
         self.ui.setupPlot()
         
     def send_CMD(self):
