@@ -62,10 +62,8 @@ def calculate_send_read_CMD(parameterGroup=None, parameterNumber=None):
     
     pnString = str(parameterNumber)
     sumPNString = 0
-    sumPNString2 = []
     for i in range(len(pnString)):
         sumPNString += ord(pnString[i])
-        sumPNString2.append(ord(pnString[i]))
     
     byteSum = (READ_CH + ord(str(parameterGroup))
                 + SEPARATE_CH + sumPNString)
@@ -79,16 +77,10 @@ def calculate_send_read_CMD(parameterGroup=None, parameterNumber=None):
     sendReadCMD = (chr(READ_CH) + str(parameterGroup)
                         + chr(SEPARATE_CH) + pnString
                         + chr(checksum))
-    sendReadCMD2 = []
-    sendReadCMD2.append(READ_CH)
-    sendReadCMD2.append(ord(str(parameterGroup)))
-    sendReadCMD2.append((SEPARATE_CH))
-    sendReadCMD2 += sumPNString2
-    sendReadCMD2.append((checksum))
-
+   
     return sendReadCMD
         
-    
+            
 # ----------------------------------------------------------------------------
 
 
