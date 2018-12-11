@@ -4,7 +4,7 @@ Created on Thu Nov 29 13:30:03 2018
 
 @author: Kyounghun Yoo
 
-Plot Pressure Data
+Plot Pressure Data in Ch. 1
 """
 
 import pyqtgraph as pg
@@ -14,7 +14,7 @@ from connect_ioc import *
 from utils import *
 
 
-class SubPlot(QtWidgets.QWidget):
+class SubPlotCh1(QtWidgets.QWidget):
     def setupPlot(self):
         vbox = QtWidgets.QVBoxLayout()
         self.pw1 = pg.PlotWidget(
