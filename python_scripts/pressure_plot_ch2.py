@@ -2,7 +2,7 @@
 """
 Created on Thu Nov 29 13:30:03 2018
 @author: Kyounghun Yoo
-Plot Pressure Data in Ch. 1
+Plot Pressure Data in Ch. 2
 """
 
 import pyqtgraph as pg
@@ -12,7 +12,7 @@ from connect_ioc import *
 from utils import *
 
 
-class SubPlotCh1(QtWidgets.QWidget):
+class SubPlotCh2(QtWidgets.QWidget):
     def setupPlot(self):
         vbox = QtWidgets.QVBoxLayout()
         self.pw1 = pg.PlotWidget(
@@ -53,7 +53,7 @@ class SubPlotCh1(QtWidgets.QWidget):
         currentTime = timestamp()
         currentTimeStr = time.ctime()
         self.x.append(currentTime)
-        pressData = get_pres1_CMD()
+        pressData = get_press2_CMD()
         pressUnit = get_unit_CMD()
         self.y.append(float(pressData))
 
