@@ -61,7 +61,7 @@ class SubPlotCh2(QtWidgets.QWidget):
             self.y.append(float(pressData))
             self.le1.setText("Current Pressure\t :\t" 
                        + pressData + "\t" + pressUnit)
-            logFile = open("Pressure_Data.csv", "a")
+            logFile = open("Pressure_Data_Ch.2.csv", "a")
             logFile.write("\n")
             logFile.write("{timestamp},{time},{pressure},{unit}".
                                           format(timestamp=currentTime,
