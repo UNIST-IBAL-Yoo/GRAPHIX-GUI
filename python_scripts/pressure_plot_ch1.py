@@ -34,7 +34,7 @@ class SubPlotCh1(QtWidgets.QWidget):
         vbox.addWidget(self.le1)
         self.setLayout(vbox)
 
-        self.setWindowTitle("Pressure Data")
+        self.setWindowTitle("Pressure Data Ch. 1")
 
         self.x = []
         self.y = []
