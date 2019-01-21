@@ -18,7 +18,7 @@ class SubPlotCh1(QtWidgets.QWidget):
     def setupPlot(self):
         vbox = QtWidgets.QVBoxLayout()
         self.pw1 = pg.PlotWidget(
-                        title="Pressure Data", 
+                        title="Pressure Data Ch. 1", 
                         labels={'left':'Pressure (mbar)'},
                         axisItems = {'bottom':TimeAxisItem(orientation='bottom')}
                         )
